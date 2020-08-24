@@ -1,11 +1,21 @@
-import React from "react";
+import React , {useContext} from "react";
 
-class Calulator extends React.Component {
-  render() {
+
+import { CalcContext } from './../contexts/CalcContext';
+const  Calulator= (props)=> {
+
+    const {value,num1,dispatch} = useContext(CalcContext);
+    console.log(value);
+    console.log(num1);
+
+    console.log(dispatch);
+
     return (
       <section className="calculator">
         <div id="display"></div>
-        <button id="clear">AC</button>
+        <button id="clear" 
+         onClick={ () => dispatch({type:'ac'}) }
+        >AC</button>
         <button id="divide">/</button>
         <button id="multiply">x</button>
 
@@ -28,6 +38,5 @@ class Calulator extends React.Component {
       </section>
     );
   }
-}
 
 export default Calulator;
